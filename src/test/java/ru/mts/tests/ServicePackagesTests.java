@@ -25,7 +25,7 @@ public class ServicePackagesTests extends TestBase {
             servicePackagesPage.inputAddress(checkValidAddress);
         });
         step("Выбираем из выпадающего списка нужный адрес - checkAddress", () -> {
-            servicePackagesPage.chooseAddress();
+            servicePackagesPage.chooseValidAddress();
         });
         step("Кликаем на кнопку Проверить", () -> {
             servicePackagesPage.checkAddress();
@@ -52,7 +52,7 @@ public class ServicePackagesTests extends TestBase {
             servicePackagesPage.inputAddressOnMap(checkValidAddress);
         });
         step("Выбираем из выпадающего списка нужный адрес - checkAddress", () -> {
-            servicePackagesPage.chooseAddress();
+            servicePackagesPage.chooseValidAddress();
         });
         step("Кликаем на кнопку Проверить", () -> {
             servicePackagesPage.clickOnCheckButton();
@@ -76,7 +76,7 @@ public class ServicePackagesTests extends TestBase {
             servicePackagesPage.inputAddress(checkValidAddress);
         });
         step("Выбираем из выпадающего списка нужный адрес - checkAddress", () -> {
-            servicePackagesPage.chooseAddress();
+            servicePackagesPage.chooseValidAddress();
         });
         step("Кликаем на кнопку Проверить", () -> {
             servicePackagesPage.checkAddress();
@@ -109,7 +109,7 @@ public class ServicePackagesTests extends TestBase {
             servicePackagesPage.inputAddress(checkValidAddress);
         });
         step("Выбираем из выпадающего списка нужный адрес - checkAddress", () -> {
-            servicePackagesPage.chooseAddress();
+            servicePackagesPage.chooseValidAddress();
         });
         step("Кликаем на кнопку Проверить", () -> {
             servicePackagesPage.checkAddress();
@@ -138,11 +138,11 @@ public class ServicePackagesTests extends TestBase {
         step("Открываем страничку с Домашними тарифами", () -> {
             servicePackagesPage.openPage();
         });
-        step("Вводим валидный адрес для проверки возможности подключения", () -> {
+        step("Вводим невалидный адрес для проверки возможности подключения", () -> {
             servicePackagesPage.inputAddress(checkInvalidAddress);
         });
         step("Выбираем из выпадающего списка нужный адрес - checkAddress", () -> {
-            servicePackagesPage.chooseAddress();
+            servicePackagesPage.chooseInvalidAddress();
         });
         step("Кликаем на кнопку Проверить", () -> {
             servicePackagesPage.checkAddress();
@@ -151,7 +151,7 @@ public class ServicePackagesTests extends TestBase {
             servicePackagesPage.checkFailureText();
         });
         step("Проверка наличия кнопки Изменить адрес", () -> {
-            servicePackagesPage.checkButtonVisible();
+            servicePackagesPage.checkInvalidButtonVisible();
         });
     }
 }

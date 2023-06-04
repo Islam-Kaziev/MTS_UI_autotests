@@ -17,8 +17,12 @@ public class ServicePackagesPage {
         $("input[placeholder=\"Город, улица, дом\"]").setValue(value);
     }
 
-    public void chooseAddress() {
+    public void chooseValidAddress() {
         $x("//b[contains(text(), 'Ленинский проспект, 147к3')]").click();
+    }
+
+    public void chooseInvalidAddress() {
+        $x("//b[contains(text(), 'проспект Ленина, 130')]").click();
     }
 
     public void checkAddress() {
@@ -31,6 +35,10 @@ public class ServicePackagesPage {
 
     public void checkButtonVisible() {
         $("div.btn_secondary").shouldBe(visible);
+    }
+
+    public void checkInvalidButtonVisible() {
+        $("button.btn_secondary").shouldBe(visible);
     }
 
     public void openMap() {
