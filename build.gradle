@@ -53,14 +53,8 @@ tasks.withType(Test) {
     }
 }
 
-task simple_test(type: Test) {
+task negative_test(type: Test) {
     useJUnitPlatform {
-        includeTags("simple")
-    }
-}
-
-task one_property_test(type: Test) {
-    useJUnitPlatform {
-        includeTags("one_property")
+        includeTags("negative")
     }
 }

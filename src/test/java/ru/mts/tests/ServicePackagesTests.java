@@ -2,6 +2,7 @@ package ru.mts.tests;
 
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -132,6 +133,7 @@ public class ServicePackagesTests extends TestBase {
     }
 
     @Test
+    @Tag("negative")
     @DisplayName("Проверка невалидного адреса на котором нет возможности подключения")
     void checkInvalidPtvAddresses() {
 
