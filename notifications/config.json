@@ -1,0 +1,17 @@
+{
+  "base": {
+    "logo": "",
+    "project": "kaziev_ia_notification_HW",
+    "environment": "qa.guru",
+    "comment": "i love my job @Islam_Kaziev",
+    "reportLink": "https://jenkins.autotests.cloud",
+    "language": "ru",
+    "allureFolder": "build/reports/allure-report/allureReport/",
+    "enableChart": true
+  },
+  "telegram": {
+    "token": "5806486807:AAFQNpHatQckMYOla-uefJhpfXspyn2dtNY",
+    "chat": "-1001836813248",
+    "replyTo": ""
+  }
+}
