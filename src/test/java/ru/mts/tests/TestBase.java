@@ -10,10 +10,12 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import ru.mts.helpers.Attach;
+import ru.mts.pages.ServicePackagesPage;
 
 import java.util.Map;
 
 public class TestBase {
+    ServicePackagesPage servicePackagesPage = new ServicePackagesPage();
     static WebConfig webConfig = ConfigFactory.create(WebConfig.class, System.getProperties());
 
     @BeforeAll

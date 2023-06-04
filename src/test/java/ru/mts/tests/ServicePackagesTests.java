@@ -4,37 +4,37 @@ package ru.mts.tests;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$;
 import static io.qameta.allure.Allure.step;
-import static ru.mts.tests.TestData.*;
 
 public class ServicePackagesTests extends TestBase {
-    String checkAddress = "Ленинский проспект 147к3";
+
+    String checkValidAddress = "Ленинский проспект 147к3";
+    String checkInvalidAddress = "Тула Проспект Ленина 130";
     String name = "Тестовая заявка";
-    String phone = "9111111111";
+    private final String PHONE = "9111111111";
 
     @Test
     @DisplayName("Проверка валидного адреса через ПТВ")
     void checkValidPtvAddresses() {
 
         step("Открываем страничку с Домашними тарифами", () -> {
-            open("/dom/home-allmts/spb-city");
+            servicePackagesPage.openPage();
         });
         step("Вводим валидный адрес для проверки возможности подключения", () -> {
-            $("input[placeholder=\"Город, улица, дом\"]").setValue(checkAddress);
+            servicePackagesPage.inputAddress(checkValidAddress);
         });
         step("Выбираем из выпадающего списка нужный адрес - checkAddress", () -> {
-            $x("//b[contains(text(), 'Ленинский проспект, 147к3')]").click();
+            servicePackagesPage.chooseAddress();
         });
         step("Кликаем на кнопку Проверить", () -> {
-            $("button.btn.btn-loader").doubleClick();
+            servicePackagesPage.checkAddress();
         });
         step("Проверка текста с результатом успешной проверки адреса", () -> {
-            $x("//p[contains(text(), 'доступен для подключения')]").click();
+            servicePackagesPage.checkHeaderSuccessText();
         });
         step("Проверка наличия кнопки Проверить другой адрес", () -> {
-            $("div.btn_secondary").shouldBe(visible);
+            servicePackagesPage.checkButtonVisible();
         });
     }
 
@@ -43,25 +43,25 @@ public class ServicePackagesTests extends TestBase {
     void checkValidAddressesUsingMap() {
 
         step("Открываем страничку с Домашними тарифами", () -> {
-            open("/dom/home-allmts/spb-city");
+            servicePackagesPage.openPage();
         });
         step("Открываем карту кликая на Указать адрес на карте", () -> {
-            $x("//span[contains(text(), 'Указать')]").click();
+            servicePackagesPage.openMap();
         });
         step("Вводим валидный адрес для проверки возможности подключения", () -> {
-            $("input[placeholder=\"Город, улица, дом\"]", 1).setValue(checkAddress);
+            servicePackagesPage.inputAddressOnMap(checkValidAddress);
         });
         step("Выбираем из выпадающего списка нужный адрес - checkAddress", () -> {
-            $x("//b[contains(text(), 'Ленинский проспект, 147к3')]").click();
+            servicePackagesPage.chooseAddress();
         });
         step("Кликаем на кнопку Проверить", () -> {
-            $("button.btn_primary").doubleClick();
+            servicePackagesPage.clickOnCheckButton();
         });
         step("Проверка текста с результатом успешной проверки адреса", () -> {
-            $x("//p[contains(text(), 'доступен для подключения')]").click();
+            servicePackagesPage.checkSuccessText();
         });
         step("Проверка наличия кнопки Проверить другой адрес", () -> {
-            $("div.btn_secondary").shouldBe(visible);
+            servicePackagesPage.checkButtonVisible();
         });
     }
 
@@ -70,40 +70,88 @@ public class ServicePackagesTests extends TestBase {
     void sendingConnectionRequest() {
 
         step("Открываем страничку с Домашними тарифами", () -> {
-            open("/dom/home-allmts/spb-city");
+            servicePackagesPage.openPage();
         });
         step("Вводим валидный адрес для проверки возможности подключения", () -> {
-            $("input[placeholder=\"Город, улица, дом\"]").setValue(checkAddress);
+            servicePackagesPage.inputAddress(checkValidAddress);
         });
         step("Выбираем из выпадающего списка нужный адрес - checkAddress", () -> {
-            $x("//b[contains(text(), 'Ленинский проспект, 147к3')]").click();
+            servicePackagesPage.chooseAddress();
         });
         step("Кликаем на кнопку Проверить", () -> {
-            $("button.btn.btn-loader").doubleClick();
+            servicePackagesPage.checkAddress();
         });
         step("Проверка текста с результатом успешной проверки адреса", () -> {
-            $x("//p[contains(text(), 'доступен для подключения')]").click();
+            servicePackagesPage.checkHeaderSuccessText();
         });
         step("Проверка наличия кнопки Проверить другой адрес", () -> {
-            $("div.btn_secondary").shouldBe(visible);
+            servicePackagesPage.checkButtonVisible();
         });
         step("Подключение одного из доступных тарифов", () -> {
-            $("div.btn_tariff-card").click();
-        });
-        step("Ввод имени", () -> {
-            $("input#username").setValue(name);
-        });
-        step("Ввод телефона", () -> {
-            $("input#phone").setValue(phone);
-        });
-        step("Нажатие кнопки Отправить заявку", () -> {
-            $("span.btn-loader__text").doubleClick();
+            servicePackagesPage.connectAvailableTariff(name, PHONE);
         });
         step("Проверка заголовка ответа об успешной отправке заявки", () -> {
-            $("div.title-text").shouldHave(exactText("Заявка на подключение отправлена"));
+            servicePackagesPage.checkResponseHeader();
         });
         step("Проверка тела ответа об успешной отправке заявки", () -> {
-            $("div.success-content").shouldHave(text("В ближайшее время наш оператор свяжется"));;
+            servicePackagesPage.checkResponseBody();
+        });
+    }
+
+    @Test
+    @DisplayName("Изменения состава продуктов при отправке заявки")
+    void changeProductsConnectionRequest() {
+
+        step("Открываем страничку с Домашними тарифами", () -> {
+            servicePackagesPage.openPage();
+        });
+        step("Вводим валидный адрес для проверки возможности подключения", () -> {
+            servicePackagesPage.inputAddress(checkValidAddress);
+        });
+        step("Выбираем из выпадающего списка нужный адрес - checkAddress", () -> {
+            servicePackagesPage.chooseAddress();
+        });
+        step("Кликаем на кнопку Проверить", () -> {
+            servicePackagesPage.checkAddress();
+        });
+        step("Проверка текста с результатом успешной проверки адреса", () -> {
+            servicePackagesPage.checkHeaderSuccessText();
+        });
+        step("Проверка наличия кнопки Проверить другой адрес", () -> {
+            servicePackagesPage.checkButtonVisible();
+        });
+        step("Подключеняем тариф без роутера и с покупкой ТВ-оборудования", () -> {
+            servicePackagesPage.connnectTariffWithOptions(name, PHONE);
+        });
+        step("Проверка заголовка ответа об успешной отправке заявки", () -> {
+            servicePackagesPage.checkResponseHeader();
+        });
+        step("Проверка тела ответа об успешной отправке заявки", () -> {
+            servicePackagesPage.checkResponseBody();
+        });
+    }
+
+    @Test
+    @DisplayName("Проверка невалидного адреса на котором нет возможности подключения")
+    void checkInvalidPtvAddresses() {
+
+        step("Открываем страничку с Домашними тарифами", () -> {
+            servicePackagesPage.openPage();
+        });
+        step("Вводим валидный адрес для проверки возможности подключения", () -> {
+            servicePackagesPage.inputAddress(checkInvalidAddress);
+        });
+        step("Выбираем из выпадающего списка нужный адрес - checkAddress", () -> {
+            servicePackagesPage.chooseAddress();
+        });
+        step("Кликаем на кнопку Проверить", () -> {
+            servicePackagesPage.checkAddress();
+        });
+        step("Проверка текста с результатом проверки невалидного адреса", () -> {
+            servicePackagesPage.checkFailureText();
+        });
+        step("Проверка наличия кнопки Изменить адрес", () -> {
+            servicePackagesPage.checkButtonVisible();
         });
     }
 }

@@ -1,8 +1,11 @@
 package ru.mts.tests;
 
+import ru.mts.pages.ServicePackagesPage;
+
 import java.util.Random;
 
 public class TestData {
+
     static Random random = new Random();
 
 
