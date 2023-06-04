@@ -75,20 +75,20 @@ gradle clean test -Denv=remote
 
 ## <img width="4%" style="vertical-align:middle" title="Jenkins" src="images/logo/Jenkins.svg"> Сборка в Jenkins
 <p align="center">
-<img title="Jenkins Build" src="images/screenshots/jenkinsBuild.png">
+<img title="Jenkins Build" src="images/screenshots/Jenkins.png">
 </p>
 
 ## <img width="4%" style="vertical-align:middle" title="Allure Report" src="images/logo/Allure_Report.svg"> Пример Allure-отчета
 ### Overview
 
 <p align="center">
-<img title="Allure Overview" src="images/screenshots/allureReportMain.png">
+<img title="Allure Overview" src="images/screenshots/Allure.png">
 </p>
 
 ### Результат выполнения теста
 
 <p align="center">
-<img title="Test Results in Alure" src="images/screenshots/allureReportTests.png">
+<img title="Test Results in Alure" src="images/screenshots/AllureResult.png">
 </p>
 
 ### <img width="4%" style="vertical-align:middle" title="Telegram" src="images/logo/Telegram.svg"> Уведомления в Telegram с использованием бота
@@ -96,12 +96,12 @@ gradle clean test -Denv=remote
 После завершения сборки специальный бот, созданный в <code>Telegram</code>, автоматически обрабатывает и отправляет сообщение с отчетом о прогоне.
 
 <p align="center">
-<img width="70%" title="Telegram Notifications" src="images/screenshots/notificationExample.png">
+<img width="70%" title="Telegram Notifications" src="images/screenshots/Telegram.png">
 </p>
 
 ### <img width="4%" style="vertical-align:middle" title="Selenoid" src="images/logo/Selenoid.svg"> Видео примера запуска теста в Selenoid
 
 К каждому тесту в отчете прилагается видео. Одно из таких видео представлено ниже.
 <p align="center">
-  <img title="Selenoid Video" src="images/gif/videoExample.gif">
+  <img title="Selenoid Video" src="images/gif/video.gif">
 </p>
