@@ -24,7 +24,7 @@ public class TestBase {
         Configuration.browser = webConfig.getBrowser();
         Configuration.browserVersion = webConfig.getBrowserVersion();
         Configuration.baseUrl = webConfig.getBaseUrl();
-        if (webConfig.getRemoteUrl() != null){
+        if (webConfig.getRemoteUrl() != null) {
             Configuration.remote = webConfig.getRemoteUrl();
         }
 
@@ -37,12 +37,12 @@ public class TestBase {
     }
 
     @BeforeEach
-    void  addListener() {
+    void addListener() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
     }
 
     @AfterEach
-    void  addAttachments() {
+    void addAttachments() {
         Attach.screenshotAs("Last screenshot");
         Attach.pageSource();
         Attach.browserConsoleLogs();

@@ -15,6 +15,7 @@ public class ServicePackagesPage {
     public void openPage() {
         open("/dom/home-allmts/spb-city");
     }
+
     public void inputAddress(String value) {
         $("input[placeholder=\"Город, улица, дом\"]").setValue(value);
     }
@@ -62,9 +63,8 @@ public class ServicePackagesPage {
     }
 
 
-
     public void connectAvailableTariff(String username, String phone) {
-            connectTariffComponent.connectAccessibleTariff(username, phone);
+        connectTariffComponent.connectAccessibleTariff(username, phone);
     }
 
     public void checkResponseHeader() {
@@ -85,7 +85,7 @@ public class ServicePackagesPage {
     }
 
     public void checkFailureText() {
- $("p.connect-address-form-result__address").shouldHave(text("Пока не можем подключить услуги"));
+        $("p.connect-address-form-result__address").shouldHave(text("Пока не можем подключить услуги"));
     }
 
 }
