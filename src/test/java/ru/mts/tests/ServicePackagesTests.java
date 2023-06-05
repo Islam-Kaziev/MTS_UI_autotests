@@ -7,11 +7,13 @@ import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.$;
 import static io.qameta.allure.Allure.step;
+import static ru.mts.tests.TestData.invalidAddressesRandom;
+import static ru.mts.tests.TestData.validAddressesRandom;
 
 public class ServicePackagesTests extends TestBase {
 
-    String checkValidAddress = "Ленинский проспект 147к3";
-    String checkInvalidAddress = "Тула Проспект Ленина 130";
+    String checkValidAddress = validAddressesRandom();
+    String checkInvalidAddress = invalidAddressesRandom();
     String name = "Тестовая заявка";
     private final String PHONE = "9111111111";
 

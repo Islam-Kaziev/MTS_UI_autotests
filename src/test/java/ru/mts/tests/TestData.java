@@ -1,7 +1,5 @@
 package ru.mts.tests;
 
-import ru.mts.pages.ServicePackagesPage;
-
 import java.util.Random;
 
 public class TestData {
@@ -9,29 +7,15 @@ public class TestData {
     static Random random = new Random();
 
 
-    public static String genderRandom() {
-        String[] gender = {"Male", "Female", "Other"};
-        int index = random.nextInt(gender.length);
-        return gender[index];
+    public static String validAddressesRandom() {
+        String[] addresses = {"Ленинский проспект 147к3", "ленина 14", "ленина 15"};
+        int index = random.nextInt(addresses.length);
+        return addresses[index];
     }
 
-    public static String monthRandom() {
-        String[] month = {"January", "February", "March", "April", "May", "June",
-                "July", "Auguste", "September", "November", "October", "December"};
-        int index = random.nextInt(month.length);
-        return month[index];
-    }
-
-    public static String sobjectRandom() {
-        String[] sobject = {"English", "Chemistry", "Computer Science", "Commerce",
-                "Economics", "Social Studies"};
-        int index = random.nextInt(sobject.length);
-        return sobject[index];
-    }
-
-    public static String hobbiesRandom() {
-        String[] hobbies = {"Music", "Sports", "Reading"};
-        int index = random.nextInt(hobbies.length);
-        return hobbies[index];
+    public static String invalidAddressesRandom() {
+        String[] addresses = {"Тула Проспект Ленина 130", "Воронеж, улица Хользунова, 25/1", "Красноармейская улица, 26"};
+        int index = random.nextInt(addresses.length);
+        return addresses[index];
     }
 }

@@ -2,6 +2,8 @@ package ru.mts.pages;
 
 import ru.mts.pages.components.ConnectTariffComponent;
 
+import java.time.Duration;
+
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -18,7 +20,7 @@ public class ServicePackagesPage {
     }
 
     public void chooseValidAddress() {
-        $x("//b[contains(text(), 'Ленинский проспект, 147к3')]").click();
+        $("span.mat-option-text").click();
     }
 
     public void chooseInvalidAddress() {
@@ -26,7 +28,9 @@ public class ServicePackagesPage {
     }
 
     public void checkAddress() {
+        $("button.btn.btn-loader").shouldBe(visible);
         $("button.btn.btn-loader").doubleClick();
+        $("button.btn.btn-loader").click();
     }
 
     public void checkHeaderSuccessText() {
