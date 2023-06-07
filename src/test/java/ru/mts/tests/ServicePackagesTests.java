@@ -5,7 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Selenide.$;
+
 import static io.qameta.allure.Allure.step;
 import static ru.mts.tests.TestData.invalidAddressesRandom;
 import static ru.mts.tests.TestData.validAddressesRandom;
@@ -124,7 +124,7 @@ public class ServicePackagesTests extends TestBase {
             servicePackagesPage.checkButtonVisible();
         });
         step("Подключеняем тариф без роутера и с покупкой ТВ-оборудования", () -> {
-            servicePackagesPage.connnectTariffWithOptions(name, PHONE);
+            servicePackagesPage.connectTariffWithOptions(name, PHONE);
         });
         step("Проверка заголовка ответа об успешной отправке заявки", () -> {
             servicePackagesPage.checkResponseHeader();

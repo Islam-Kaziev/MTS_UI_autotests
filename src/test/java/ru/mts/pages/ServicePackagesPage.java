@@ -2,7 +2,6 @@ package ru.mts.pages;
 
 import ru.mts.pages.components.ConnectTariffComponent;
 
-import java.time.Duration;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
@@ -75,7 +74,7 @@ public class ServicePackagesPage {
         $("div.success-content").shouldHave(text("В ближайшее время наш оператор свяжется"));
     }
 
-    public void connnectTariffWithOptions(String name, String phone) {
+    public void connectTariffWithOptions(String name, String phone) {
         $("div.btn_tariff-card").click();
         $("input#username").setValue(name);
         $("input#phone").setValue(phone);
