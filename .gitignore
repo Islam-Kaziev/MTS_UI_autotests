@@ -6,4 +6,4 @@
 /gradle/
 /.idea/
 *.log
-
+/resources/remote.properties
