@@ -8,7 +8,7 @@ public class TestData {
 
 
     public static String validAddressesRandom() {
-        String[] addresses = {"Ленинский проспект 147к3", "ленина 14", "ленина 15"};
+        String[] addresses = {"Ленинский проспект 147к3", "ленина 14", "Архангельская область, Мирный, улица Ленина, 15"};
         int index = random.nextInt(addresses.length);
         return addresses[index];
     }

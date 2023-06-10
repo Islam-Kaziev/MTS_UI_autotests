@@ -1,6 +1,9 @@
 package ru.mts.tests;
 
 
+import io.qameta.allure.Owner;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -18,6 +21,8 @@ public class ServicePackagesTests extends TestBase {
     private final String PHONE = "9111111111";
 
     @Test
+    @Owner("Казиев Ислам")
+    @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Проверка валидного адреса через ПТВ")
     void checkValidPtvAddresses() {
 
@@ -42,6 +47,8 @@ public class ServicePackagesTests extends TestBase {
     }
 
     @Test
+    @Owner("Казиев Ислам")
+    @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Проверка валидного адреса указав место на карте")
     void checkValidAddressesUsingMap() {
 
@@ -69,6 +76,8 @@ public class ServicePackagesTests extends TestBase {
     }
 
     @Test
+    @Owner("Казиев Ислам")
+    @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Проверка успешной отправки заявки на подключение тарифа после успешного прохождения ПТВ")
     void sendingConnectionRequest() {
 
@@ -102,6 +111,8 @@ public class ServicePackagesTests extends TestBase {
     }
 
     @Test
+    @Owner("Казиев Ислам")
+    @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Изменения состава продуктов при отправке заявки")
     void changeProductsConnectionRequest() {
 
@@ -135,6 +146,8 @@ public class ServicePackagesTests extends TestBase {
     }
 
     @Test
+    @Owner("Казиев Ислам")
+    @Severity(SeverityLevel.CRITICAL)
     @Tag("negative")
     @DisplayName("Проверка невалидного адреса на котором нет возможности подключения")
     void checkInvalidPtvAddresses() {

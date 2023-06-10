@@ -54,6 +54,7 @@ public class ServicePackagesPage {
     }
 
     public void clickOnCheckButton() {
+        $("span.error-notification").shouldBe(hidden);
         $("button.btn_primary").doubleClick();
     }
 
@@ -80,6 +81,7 @@ public class ServicePackagesPage {
         $("input#phone").setValue(phone);
         $x("//span[contains(text(), 'Роутер не нужен')]").click();
         $("div.tv-devices__item-wrapper--unselected").click();
+        $("span.btn-loader__text").shouldBe(enabled);
         $("span.btn-loader__text").doubleClick();
     }
 
