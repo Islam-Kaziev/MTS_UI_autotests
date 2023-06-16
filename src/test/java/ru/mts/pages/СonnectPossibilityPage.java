@@ -18,7 +18,6 @@ public class СonnectPossibilityPage {
 
     public void openPage() {
         open("/dom/home-allmts/spb-city");
-        $("button.btn_mts").click();
     }
 
     public void inputAddress(String value) {

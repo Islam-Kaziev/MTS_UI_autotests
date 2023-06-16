@@ -9,7 +9,6 @@ public class DetailTariffPage {
 
         public void openPage() {
             open("/mobilnaya-svyaz/tarifi/vse-tarifi/mobile-tv-inet");
-            $("button.btn_mts").click();
         }
 
         public void inputAddress(String value) {
@@ -19,7 +18,6 @@ public class DetailTariffPage {
         }
 
         public void chooseTariff() {
-            $("button.btn").click();
             $("mts-universal-card-button.card-btn").click();
         }
 
