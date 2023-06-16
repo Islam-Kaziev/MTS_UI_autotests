@@ -18,6 +18,7 @@ public class DetailTariffPage {
         }
 
         public void chooseTariff() {
+            $("mts-universal-card-button.card-btn").scrollTo();
             $("mts-universal-card-button.card-btn").click();
         }
 
@@ -29,8 +30,8 @@ public class DetailTariffPage {
             $("div.ng-scroll-content").shouldBe(hidden);
             $("span.error-notification").shouldBe(hidden);
             $("input[placeholder=\"Город, улица, дом\"]").shouldBe(enabled);
-            $("button.btn_primary").click();
-            $("button.btn_primary").doubleClick();
+            $("button.map-dialog__button").click();
+            $("button.map-dialog__button").doubleClick();
         }
 
     public void checkNegativeResponseHeader() {
@@ -43,7 +44,6 @@ public class DetailTariffPage {
 
     public void chooseValidAddress() {
         $("span.error-notification").shouldBe(hidden);
-        $("span.mat-option-text").shouldBe(visible);
         $("span.mat-option-text").click();
     }
 

@@ -49,7 +49,7 @@ public class TestBase {
 
     @AfterEach
     void addAttachments() {
-        if (webConfig.getRemoteUrl() != null) {
+        if (Configuration.remote == null) {
             Attach.screenshotAs("Last screenshot");
             Attach.pageSource();
             Attach.browserConsoleLogs();
