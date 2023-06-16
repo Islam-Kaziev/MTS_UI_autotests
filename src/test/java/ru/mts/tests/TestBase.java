@@ -10,15 +10,18 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import ru.mts.helpers.Attach;
+import ru.mts.pages.ApplicationFormPage;
 import ru.mts.pages.DetailTariffPage;
-import ru.mts.pages.ServicePackagesPage;
+import ru.mts.pages.СonnectPossibilityPage;
 
 import java.util.Map;
 
 public class TestBase {
-    ServicePackagesPage servicePackagesPage = new ServicePackagesPage();
+    СonnectPossibilityPage servicePackagesPage = new СonnectPossibilityPage();
 
     DetailTariffPage detailTariffPage = new DetailTariffPage();
+
+    ApplicationFormPage applicationFormPage = new ApplicationFormPage();
     static WebConfig webConfig = ConfigFactory.create(WebConfig.class, System.getProperties());
 
     @BeforeAll
@@ -46,9 +49,15 @@ public class TestBase {
 
     @AfterEach
     void addAttachments() {
-        Attach.screenshotAs("Last screenshot");
-        Attach.pageSource();
-        Attach.browserConsoleLogs();
-        Attach.addVideo();
+        if (webConfig.getRemoteUrl() != null) {
+            Attach.screenshotAs("Last screenshot");
+            Attach.pageSource();
+            Attach.browserConsoleLogs();
+        } else {
+            Attach.screenshotAs("Last screenshot");
+            Attach.pageSource();
+            Attach.browserConsoleLogs();
+            Attach.addVideo();
+        }
     }
 }

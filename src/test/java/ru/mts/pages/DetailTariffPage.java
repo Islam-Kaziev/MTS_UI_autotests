@@ -1,7 +1,5 @@
 package ru.mts.pages;
 
-import ru.mts.pages.components.ConnectTariffComponent;
-
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
@@ -11,6 +9,7 @@ public class DetailTariffPage {
 
         public void openPage() {
             open("/mobilnaya-svyaz/tarifi/vse-tarifi/mobile-tv-inet");
+            $("button.btn_mts").click();
         }
 
         public void inputAddress(String value) {
@@ -28,24 +27,12 @@ public class DetailTariffPage {
             $("span.mat-option-text").click();
         }
 
-        public void checkAddress() {
-            $("button.btn.btn-loader").shouldBe(visible);
-            $("button.btn.btn-loader").doubleClick();
-            $("button.btn.btn-loader").click();
-        }
-
         public void clickOnCheckButton() {
+            $("div.ng-scroll-content").shouldBe(hidden);
             $("span.error-notification").shouldBe(hidden);
             $("input[placeholder=\"Город, улица, дом\"]").shouldBe(enabled);
+            $("button.btn_primary").click();
             $("button.btn_primary").doubleClick();
-        }
-
-        public void checkResponseHeader() {
-            $("div.title-text").shouldHave(exactText("Заявка на подключение отправлена"));
-        }
-
-        public void checkResponseBody() {
-            $("div.success-content").shouldHave(text("В ближайшее время наш оператор свяжется"));
         }
 
     public void checkNegativeResponseHeader() {
@@ -55,14 +42,6 @@ public class DetailTariffPage {
     public void checkNegativeResponseBody() {
         $("p.result-modal__subtitle").shouldHave(text("Вы можете изменить адрес подключения"));
     }
-
-        public void connectTariffOptions(String name, String phone) {
-            $("input#username").setValue(name);
-            $("input#phone").setValue(phone);
-            $x("//span[contains(text(), 'Роутер не нужен')]").click();
-            $("div.tv-devices__item-wrapper--unselected").click();
-            $("span.btn-loader__text").doubleClick();
-        }
 
     public void chooseValidAddress() {
         $("span.error-notification").shouldBe(hidden);

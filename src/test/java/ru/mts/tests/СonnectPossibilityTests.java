@@ -9,11 +9,14 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 
+import static com.codeborne.selenide.Selenide.$;
 import static io.qameta.allure.Allure.step;
 import static ru.mts.tests.TestData.invalidAddressesRandom;
 import static ru.mts.tests.TestData.validAddressesRandom;
 
-public class ServicePackagesTests extends TestBase {
+@Owner("Казиев Ислам")
+@Severity(SeverityLevel.CRITICAL)
+public class СonnectPossibilityTests extends TestBase {
 
     String checkValidAddress = validAddressesRandom();
     String checkInvalidAddress = invalidAddressesRandom();
@@ -21,8 +24,6 @@ public class ServicePackagesTests extends TestBase {
     private final String PHONE = "9111111111";
 
     @Test
-    @Owner("Казиев Ислам")
-    @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Проверка валидного адреса через ПТВ")
     void checkValidPtvAddresses() {
 
@@ -47,8 +48,6 @@ public class ServicePackagesTests extends TestBase {
     }
 
     @Test
-    @Owner("Казиев Ислам")
-    @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Проверка валидного адреса указав место на карте")
     void checkValidAddressesUsingMap() {
 
@@ -76,8 +75,6 @@ public class ServicePackagesTests extends TestBase {
     }
 
     @Test
-    @Owner("Казиев Ислам")
-    @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Проверка успешной отправки заявки на подключение тарифа после успешного прохождения ПТВ")
     void sendingConnectionRequest() {
 
@@ -100,19 +97,17 @@ public class ServicePackagesTests extends TestBase {
             servicePackagesPage.checkButtonVisible();
         });
         step("Подключение одного из доступных тарифов", () -> {
-            servicePackagesPage.connectAvailableTariff(name, PHONE);
+            applicationFormPage.connectTariffOptions(name, PHONE);
         });
         step("Проверка заголовка ответа об успешной отправке заявки", () -> {
-            servicePackagesPage.checkResponseHeader();
+            applicationFormPage.checkResponseHeader();
         });
         step("Проверка тела ответа об успешной отправке заявки", () -> {
-            servicePackagesPage.checkResponseBody();
+            applicationFormPage.checkResponseBody();
         });
     }
 
     @Test
-    @Owner("Казиев Ислам")
-    @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Изменения состава продуктов при отправке заявки")
     void changeProductsConnectionRequest() {
 
@@ -146,8 +141,6 @@ public class ServicePackagesTests extends TestBase {
     }
 
     @Test
-    @Owner("Казиев Ислам")
-    @Severity(SeverityLevel.CRITICAL)
     @Tag("negative")
     @DisplayName("Проверка невалидного адреса на котором нет возможности подключения")
     void checkInvalidPtvAddresses() {

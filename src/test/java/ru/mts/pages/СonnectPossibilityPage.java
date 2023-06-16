@@ -1,18 +1,24 @@
 package ru.mts.pages;
 
+import com.codeborne.selenide.ClickOptions;
 import ru.mts.pages.components.ConnectTariffComponent;
 
 
+import java.time.Duration;
+
+import static com.codeborne.selenide.ClickOptions.withTimeout;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
+import static java.time.Duration.ofSeconds;
 
-public class ServicePackagesPage {
+public class СonnectPossibilityPage {
 
     ConnectTariffComponent connectTariffComponent = new ConnectTariffComponent();
 
 
     public void openPage() {
         open("/dom/home-allmts/spb-city");
+        $("button.btn_mts").click();
     }
 
     public void inputAddress(String value) {
@@ -24,13 +30,16 @@ public class ServicePackagesPage {
     }
 
     public void chooseInvalidAddress() {
-        $x("//b[contains(text(), 'проспект Ленина, 130')]").click();
+        $("span.mat-option-text").click();
+        $("span.error-notification").shouldBe(hidden);
     }
 
     public void checkAddress() {
+        $("div.ng-scroll-content").shouldBe(hidden);
+        $("span.error-notification").shouldBe(hidden);
         $("button.btn.btn-loader").shouldBe(visible);
+        $("button.btn.btn-loader").click(withTimeout(ofSeconds(3)));
         $("button.btn.btn-loader").doubleClick();
-        $("button.btn.btn-loader").click();
     }
 
     public void checkHeaderSuccessText() {
@@ -54,7 +63,10 @@ public class ServicePackagesPage {
     }
 
     public void clickOnCheckButton() {
+        $("div.ng-scroll-content").shouldBe(hidden);
         $("span.error-notification").shouldBe(hidden);
+        $("button.btn.btn-loader").shouldBe(visible);
+        $("button.btn_primary").click(withTimeout(ofSeconds(3)));
         $("button.btn_primary").doubleClick();
     }
 
