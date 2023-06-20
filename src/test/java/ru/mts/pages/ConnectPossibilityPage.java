@@ -1,20 +1,12 @@
 package ru.mts.pages;
 
-import com.codeborne.selenide.ClickOptions;
-import ru.mts.pages.components.ConnectTariffComponent;
-
-
-import java.time.Duration;
 
 import static com.codeborne.selenide.ClickOptions.withTimeout;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static java.time.Duration.ofSeconds;
 
-public class СonnectPossibilityPage {
-
-    ConnectTariffComponent connectTariffComponent = new ConnectTariffComponent();
-
+public class ConnectPossibilityPage {
 
     public void openPage() {
         open("/dom/home-allmts/spb-city");
@@ -73,11 +65,6 @@ public class СonnectPossibilityPage {
         $x("//p[contains(text(), 'доступен для подключения')]").click();
     }
 
-
-    public void connectAvailableTariff(String username, String phone) {
-        connectTariffComponent.connectAccessibleTariff(username, phone);
-    }
-
     public void checkResponseHeader() {
         $("div.title-text").shouldHave(exactText("Заявка на подключение отправлена"));
     }
@@ -98,6 +85,16 @@ public class СonnectPossibilityPage {
 
     public void checkFailureText() {
         $("p.connect-address-form-result__address").shouldHave(text("Пока не можем подключить услуги"));
+    }
+
+    public void connectTariffOptions(String name, String phone) {
+        $("div.btn_tariff-card").click();
+        $("input#username").setValue(name);
+        $("input#phone").setValue(phone);
+        $x("//span[contains(text(), 'Роутер не нужен')]").click();
+        $("div.tv-devices__item-wrapper--unselected").click();
+        $("span.btn-loader__text").shouldBe(enabled);
+        $("span.btn-loader__text").doubleClick();
     }
 
 }

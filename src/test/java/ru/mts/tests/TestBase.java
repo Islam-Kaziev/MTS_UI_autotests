@@ -1,6 +1,7 @@
 package ru.mts.tests;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import ru.mts.config.WebConfig;
 import io.qameta.allure.selenide.AllureSelenide;
@@ -12,12 +13,12 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import ru.mts.helpers.Attach;
 import ru.mts.pages.ApplicationFormPage;
 import ru.mts.pages.DetailTariffPage;
-import ru.mts.pages.СonnectPossibilityPage;
+import ru.mts.pages.ConnectPossibilityPage;
 
 import java.util.Map;
 
 public class TestBase {
-    СonnectPossibilityPage servicePackagesPage = new СonnectPossibilityPage();
+    ConnectPossibilityPage connectPossibilityPage = new ConnectPossibilityPage();
 
     DetailTariffPage detailTariffPage = new DetailTariffPage();
 
@@ -53,11 +54,13 @@ public class TestBase {
             Attach.screenshotAs("Last screenshot");
             Attach.pageSource();
             Attach.browserConsoleLogs();
+            Selenide.closeWebDriver();
         } else {
             Attach.screenshotAs("Last screenshot");
             Attach.pageSource();
             Attach.browserConsoleLogs();
             Attach.addVideo();
+            Selenide.closeWebDriver();
         }
     }
 }

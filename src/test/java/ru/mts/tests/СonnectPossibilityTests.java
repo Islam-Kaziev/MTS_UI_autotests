@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 
-import static com.codeborne.selenide.Selenide.$;
 import static io.qameta.allure.Allure.step;
 import static ru.mts.tests.TestData.invalidAddressesRandom;
 import static ru.mts.tests.TestData.validAddressesRandom;
@@ -28,22 +27,22 @@ public class СonnectPossibilityTests extends TestBase {
     void checkValidPtvAddresses() {
 
         step("Открываем страничку с Домашними тарифами", () -> {
-            servicePackagesPage.openPage();
+            connectPossibilityPage.openPage();
         });
         step("Вводим валидный адрес для проверки возможности подключения", () -> {
-            servicePackagesPage.inputAddress(checkValidAddress);
+            connectPossibilityPage.inputAddress(checkValidAddress);
         });
         step("Выбираем из выпадающего списка нужный адрес - checkAddress", () -> {
-            servicePackagesPage.chooseValidAddress();
+            connectPossibilityPage.chooseValidAddress();
         });
         step("Кликаем на кнопку Проверить", () -> {
-            servicePackagesPage.checkAddress();
+            connectPossibilityPage.checkAddress();
         });
         step("Проверка текста с результатом успешной проверки адреса", () -> {
-            servicePackagesPage.checkHeaderSuccessText();
+            connectPossibilityPage.checkHeaderSuccessText();
         });
         step("Проверка наличия кнопки Проверить другой адрес", () -> {
-            servicePackagesPage.checkButtonVisible();
+            connectPossibilityPage.checkButtonVisible();
         });
     }
 
@@ -52,25 +51,25 @@ public class СonnectPossibilityTests extends TestBase {
     void checkValidAddressesUsingMap() {
 
         step("Открываем страничку с Домашними тарифами", () -> {
-            servicePackagesPage.openPage();
+            connectPossibilityPage.openPage();
         });
         step("Открываем карту кликая на Указать адрес на карте", () -> {
-            servicePackagesPage.openMap();
+            connectPossibilityPage.openMap();
         });
         step("Вводим валидный адрес для проверки возможности подключения", () -> {
-            servicePackagesPage.inputAddressOnMap(checkValidAddress);
+            connectPossibilityPage.inputAddressOnMap(checkValidAddress);
         });
         step("Выбираем из выпадающего списка нужный адрес - checkAddress", () -> {
-            servicePackagesPage.chooseValidAddress();
+            connectPossibilityPage.chooseValidAddress();
         });
         step("Кликаем на кнопку Проверить", () -> {
-            servicePackagesPage.clickOnCheckButton();
+            connectPossibilityPage.clickOnCheckButton();
         });
         step("Проверка текста с результатом успешной проверки адреса", () -> {
-            servicePackagesPage.checkSuccessText();
+            connectPossibilityPage.checkSuccessText();
         });
         step("Проверка наличия кнопки Проверить другой адрес", () -> {
-            servicePackagesPage.checkButtonVisible();
+            connectPossibilityPage.checkButtonVisible();
         });
     }
 
@@ -79,25 +78,25 @@ public class СonnectPossibilityTests extends TestBase {
     void sendingConnectionRequest() {
 
         step("Открываем страничку с Домашними тарифами", () -> {
-            servicePackagesPage.openPage();
+            connectPossibilityPage.openPage();
         });
         step("Вводим валидный адрес для проверки возможности подключения", () -> {
-            servicePackagesPage.inputAddress(checkValidAddress);
+            connectPossibilityPage.inputAddress(checkValidAddress);
         });
         step("Выбираем из выпадающего списка нужный адрес - checkAddress", () -> {
-            servicePackagesPage.chooseValidAddress();
+            connectPossibilityPage.chooseValidAddress();
         });
         step("Кликаем на кнопку Проверить", () -> {
-            servicePackagesPage.checkAddress();
+            connectPossibilityPage.checkAddress();
         });
         step("Проверка текста с результатом успешной проверки адреса", () -> {
-            servicePackagesPage.checkHeaderSuccessText();
+            connectPossibilityPage.checkHeaderSuccessText();
         });
         step("Проверка наличия кнопки Проверить другой адрес", () -> {
-            servicePackagesPage.checkButtonVisible();
+            connectPossibilityPage.checkButtonVisible();
         });
         step("Подключение одного из доступных тарифов", () -> {
-            applicationFormPage.connectTariffOptions(name, PHONE);
+            connectPossibilityPage.connectTariffOptions(name, PHONE);
         });
         step("Проверка заголовка ответа об успешной отправке заявки", () -> {
             applicationFormPage.checkResponseHeader();
@@ -112,31 +111,31 @@ public class СonnectPossibilityTests extends TestBase {
     void changeProductsConnectionRequest() {
 
         step("Открываем страничку с Домашними тарифами", () -> {
-            servicePackagesPage.openPage();
+            connectPossibilityPage.openPage();
         });
         step("Вводим валидный адрес для проверки возможности подключения", () -> {
-            servicePackagesPage.inputAddress(checkValidAddress);
+            connectPossibilityPage.inputAddress(checkValidAddress);
         });
         step("Выбираем из выпадающего списка нужный адрес - checkAddress", () -> {
-            servicePackagesPage.chooseValidAddress();
+            connectPossibilityPage.chooseValidAddress();
         });
         step("Кликаем на кнопку Проверить", () -> {
-            servicePackagesPage.checkAddress();
+            connectPossibilityPage.checkAddress();
         });
         step("Проверка текста с результатом успешной проверки адреса", () -> {
-            servicePackagesPage.checkHeaderSuccessText();
+            connectPossibilityPage.checkHeaderSuccessText();
         });
         step("Проверка наличия кнопки Проверить другой адрес", () -> {
-            servicePackagesPage.checkButtonVisible();
+            connectPossibilityPage.checkButtonVisible();
         });
         step("Подключеняем тариф без роутера и с покупкой ТВ-оборудования", () -> {
-            servicePackagesPage.connectTariffWithOptions(name, PHONE);
+            connectPossibilityPage.connectTariffWithOptions(name, PHONE);
         });
         step("Проверка заголовка ответа об успешной отправке заявки", () -> {
-            servicePackagesPage.checkResponseHeader();
+            applicationFormPage .checkResponseHeader();
         });
         step("Проверка тела ответа об успешной отправке заявки", () -> {
-            servicePackagesPage.checkResponseBody();
+            applicationFormPage.checkResponseBody();
         });
     }
 
@@ -146,22 +145,22 @@ public class СonnectPossibilityTests extends TestBase {
     void checkInvalidPtvAddresses() {
 
         step("Открываем страничку с Домашними тарифами", () -> {
-            servicePackagesPage.openPage();
+            connectPossibilityPage.openPage();
         });
         step("Вводим невалидный адрес для проверки возможности подключения", () -> {
-            servicePackagesPage.inputAddress(checkInvalidAddress);
+            connectPossibilityPage.inputAddress(checkInvalidAddress);
         });
         step("Выбираем из выпадающего списка нужный адрес - checkAddress", () -> {
-            servicePackagesPage.chooseInvalidAddress();
+            connectPossibilityPage.chooseInvalidAddress();
         });
         step("Кликаем на кнопку Проверить", () -> {
-            servicePackagesPage.checkAddress();
+            connectPossibilityPage.checkAddress();
         });
         step("Проверка текста с результатом проверки невалидного адреса", () -> {
-            servicePackagesPage.checkFailureText();
+            connectPossibilityPage.checkFailureText();
         });
         step("Проверка наличия кнопки Изменить адрес", () -> {
-            servicePackagesPage.checkInvalidButtonVisible();
+            connectPossibilityPage.checkInvalidButtonVisible();
         });
     }
 }

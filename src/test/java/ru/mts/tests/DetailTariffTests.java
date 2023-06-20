@@ -8,13 +8,10 @@ import org.junit.jupiter.api.Test;
 
 import static io.qameta.allure.Allure.step;
 import static ru.mts.tests.TestData.invalidAddressesRandom;
-import static ru.mts.tests.TestData.validAddressesRandom;
 
 @Owner("Казиев Ислам")
 @Severity(SeverityLevel.CRITICAL)
 public class DetailTariffTests extends TestBase {
-
-    String checkValidAddress = validAddressesRandom();
     String checkInvalidAddress = invalidAddressesRandom();
     String name = "Тестовая заявка";
     private final String PHONE = "9111111111";
