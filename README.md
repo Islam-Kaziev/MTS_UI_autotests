@@ -85,7 +85,7 @@ gradle clean test -Denv=remote
 <img title="Allure Overview" src="images/screenshots/Allure.png">
 </p>
 
-### <a href="https://allure.autotests.cloud/launch/25237">Результат выполнения теста</a>
+### <a href="https://allure.autotests.cloud/launch/25980">Результат выполнения теста</a>
 
 <p align="center">
 <img title="Test Results in Alure" src="images/screenshots/AllureResult.png">
