@@ -132,7 +132,7 @@ public class СonnectPossibilityTests extends TestBase {
             connectPossibilityPage.connectTariffWithOptions(name, PHONE);
         });
         step("Проверка заголовка ответа об успешной отправке заявки", () -> {
-            applicationFormPage .checkResponseHeader();
+            applicationFormPage.checkResponseHeader();
         });
         step("Проверка тела ответа об успешной отправке заявки", () -> {
             applicationFormPage.checkResponseBody();
