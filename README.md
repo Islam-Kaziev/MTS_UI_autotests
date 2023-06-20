@@ -73,12 +73,12 @@ gradle clean test -Denv=remote
 * <code>BROWSER_SIZE</code> – размер окна браузера, в котором будут выполняться тесты.
 * <code>BASE_URL</code> – Url, по которому будет открываться тестируемое приложение. По-умолчанию - <code>https://spb.mts.ru</code>.
 
-## <img width="4%" style="vertical-align:middle" title="Jenkins" src="images/logo/Jenkins.svg"> <a href="https://jenkins.autotests.cloud/search/?q=Students+MTS_UI_autotests&Jenkins-Crumb=af11b65d18683a8b4e7fdbd90205794d781dbeed713fbfd9ec762ad6f10663eb">Сборка в Jenkins</a>
+## <img width="4%" style="vertical-align:middle" title="Jenkins" src="images/logo/Jenkins.svg"> <a href="https://jenkins.autotests.cloud/job/Students/job/MTS_UI_autotests2/">Сборка в Jenkins</a>
 <p align="center">
 <img title="Jenkins Build" src="images/screenshots/Jenkins.png">
 </p>
 
-## <img width="4%" style="vertical-align:middle" title="Allure Report" src="images/logo/Allure_Report.svg">  <a href="https://jenkins.autotests.cloud/job/Students/job/MTS_UI_autotests/4/allure/">Пример Allure-отчета</a>
+## <img width="4%" style="vertical-align:middle" title="Allure Report" src="images/logo/Allure_Report.svg">  <a href="https://jenkins.autotests.cloud/job/Students/job/MTS_UI_autotests2/2/allure/">Пример Allure-отчета</a>
 ### Overview
 
 <p align="center">
